@@ -1,0 +1,32 @@
+[
+    {
+        "slug": "merge-sorted-array",
+        "id": "88",
+        "solution": "class Solution:\n    def merge(self, nums1, m, nums2, n):\n        i, j, k = m - 1, n - 1, m + n - 1\n        while i >= 0 and j >= 0:\n            if nums1[i] > nums2[j]:\n                nums1[k] = nums1[i]\n                i -= 1\n            else:\n                nums1[k] = nums2[j]\n                j -= 1\n            k -= 1\n        while j >= 0:\n            nums1[k] = nums2[j]\n            j -= 1\n            k -= 1"
+    },
+    {
+        "slug": "remove-element",
+        "id": "27",
+        "solution": "class Solution:\n    def removeElement(self, nums, val):\n        k = 0\n        for num in nums:\n            if num != val:\n                nums[k] = num\n                k += 1\n        return k"
+    },
+    {
+        "slug": "remove-duplicates-from-sorted-array",
+        "id": "26",
+        "solution": "class Solution:\n    def removeDuplicates(self, nums):\n        if not nums:\n            return 0\n        k = 1\n        for i in range(1, len(nums)):\n            if nums[i] != nums[i-1]:\n                nums[k] = nums[i]\n                k += 1\n        return k"
+    },
+    {
+        "slug": "remove-duplicates-from-sorted-array-ii",
+        "id": "80",
+        "solution": "class Solution:\n    def removeDuplicates(self, nums):\n        if len(nums) <= 2:\n            return len(nums)\n        k = 2\n        for i in range(2, len(nums)):\n            if nums[i] != nums[k-2]:\n                nums[k] = nums[i]\n                k += 1\n        return k"
+    },
+    {
+        "slug": "majority-element",
+        "id": "169",
+        "solution": "class Solution:\n    def majorityElement(self, nums):\n        count = 0\n        candidate = None\n        for num in nums:\n            if count == 0:\n                candidate = num\n            count += (1 if num == candidate else -1)\n        return candidate"
+    },
+    {
+        "slug": "rotate-array",
+        "id": "189",
+        "solution": "class Solution:\n    def rotate(self, nums, k):\n        n = len(nums)\n        k %= n\n        nums[:] = nums[::-1]\n        nums[:k] = nums[:k][::-1]\n        nums[k:] = nums[k:][::-1]"
+    }
+]
